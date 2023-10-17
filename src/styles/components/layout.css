@@ -1,0 +1,12 @@
+.ant-layout-sider,
+.ant-menu {
+  background-color: var(--siderBg) !important;
+}
+
+:where(.css-dev-only-do-not-override-3mqfnx).ant-menu-dark
+  .ant-menu-item-selected,
+:where(.css-dev-only-do-not-override-3mqfnx).ant-menu-dark
+  > .ant-menu
+  .ant-menu-item-selected {
+  background-color: var(--primary) !important;
+}
