@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import Routers from "./config/Routers";
+import { useSelector } from "react-redux";
+import { light, dark } from "./config/theme";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+  const theme = useSelector((state) => state.theme.theme);
+
+  useEffect(() => {
+    if (theme === "light") {
+      Object.keys(light).forEach((key) => {
+        document.body.style.setProperty(`--${key}`, light[key]);
+      });
+    } else {
+      Object.keys(dark).forEach((key) => {
+        document.body.style.setProperty(`--${key}`, dark[key]);
+      });
+    }
+  }, [theme]);
+
+  return <Routers />;
+};
 
 export default App;
