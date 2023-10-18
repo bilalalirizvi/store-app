@@ -1,3 +1,14 @@
+@import "./_ant.css";
 @import "./_general.css";
 
 @import "./components//layout.css";
+
+/* MODALS */
+@import "./modals/createUser.css";
+
+/* COMPONENT */
+
+/* PAGES */
+@import "./pages/users.css";
+@import "./pages/stores.css";
+@import "./pages/products.css";

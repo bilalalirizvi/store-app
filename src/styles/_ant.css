@@ -1,0 +1,23 @@
+/* FORM */
+.ant-form-item {
+  margin-bottom: 10px !important;
+}
+.ant-form-item-label {
+  padding-bottom: 3px !important;
+}
+.ant-form-item-required {
+  font-size: 13px !important;
+}
+
+/* MODAL */
+.ant-modal-title {
+  font-size: 20px !important;
+}
+.ant-modal-footer {
+  display: none !important;
+}
+
+/* INPUT */
+:where(.css-dev-only-do-not-override-1tffso9).ant-input {
+  padding: 6px 11px !important;
+}

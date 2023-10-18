@@ -1,0 +1,7 @@
+.create_user_modal .create_user_modal_footer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}

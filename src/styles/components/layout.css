@@ -1,12 +1,35 @@
+/* SIDEBAR */
 .ant-layout-sider,
 .ant-menu {
   background-color: var(--siderBg) !important;
 }
-
+.ant-menu {
+  overflow-y: auto;
+  padding-inline: 10px;
+}
 :where(.css-dev-only-do-not-override-3mqfnx).ant-menu-dark
   .ant-menu-item-selected,
 :where(.css-dev-only-do-not-override-3mqfnx).ant-menu-dark
   > .ant-menu
   .ant-menu-item-selected {
   background-color: var(--primary) !important;
+}
+
+/* HEADER */
+.ant-layout-header {
+  background-color: var(--headerBg);
+  border-bottom: 1px solid var(--border);
+}
+
+/* CONTENT */
+.ant-layout-content {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* FOOTER */
+.ant-layout-footer {
+  background-color: var(--footerBg);
+  text-align: center;
+  border-top: 1px solid var(--border);
 }

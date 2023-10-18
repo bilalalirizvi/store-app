@@ -3,6 +3,8 @@ import Routers from "./config/Routers";
 import { useSelector } from "react-redux";
 import { light, dark } from "./config/theme";
 
+import { App as AntApp } from "antd";
+
 const App = () => {
   const theme = useSelector((state) => state.theme.theme);
 
@@ -18,7 +20,11 @@ const App = () => {
     }
   }, [theme]);
 
-  return <Routers />;
+  return (
+    <AntApp>
+      <Routers />;
+    </AntApp>
+  );
 };
 
 export default App;

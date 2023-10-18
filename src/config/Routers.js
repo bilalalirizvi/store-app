@@ -1,20 +1,35 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "../components";
+
+import { Products, Stores, Users } from "../pages";
 
 const Routers = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const token = "wefgi87654esdu76tr" || localStorage.getItem("token");
+
+  const token = true || localStorage.getItem("token");
 
   useEffect(() => {
     !isLoading && setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 500);
   }, []);
 
   const Loading = () => {
-    return <div>Loading</div>;
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        Loading.......
+      </div>
+    );
   };
 
   return (
@@ -26,8 +41,12 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />} />
-        {/* <Route path='*' element={<ComingSoon />} /> */}
+        <Route path="/" element={<Layout />}>
+          <Route index={true} element={<Users />} />
+          <Route path="/store" element={<Stores />} />
+          <Route path="/product" element={<Products />} />
+          {/* <Route path='*' element={<NotFound />} /> */}
+        </Route>
       </Routes>
     </BrowserRouter>
   );
