@@ -18,7 +18,7 @@ const VerticalLayout = () => {
         <Content>
           <Outlet />
         </Content>
-        <Footer>Ant Design ©2023 Created by Ant UED</Footer>
+        <Footer>Store's ©2023 Created by Bilal Ali</Footer>
       </Layout>
     </Layout>
   );

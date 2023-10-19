@@ -1,3 +1,23 @@
+/* TABLE */
+table .ant-table-measure-row {
+  display: none !important;
+}
+table thead tr > th {
+  /* padding-block: 10px !important; */
+}
+table tbody tr > td {
+  padding-block: 4px !important;
+}
+
+:where(.css-dev-only-do-not-override-1tffso9).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th:not(:last-child):not(.ant-table-selection-column):not(
+    .ant-table-row-expand-icon-cell
+  ):not([colspan])::before {
+  background-color: transparent;
+}
+
 /* FORM */
 .ant-form-item {
   margin-bottom: 10px !important;

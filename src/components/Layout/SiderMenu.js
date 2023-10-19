@@ -53,7 +53,17 @@ const SiderMenu = () => {
 
   return (
     <>
-      <div style={{ width: "100%", height: `${headerHeight}px` }}></div>
+      <div
+        style={{
+          width: "100%",
+          height: `${headerHeight}px`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <h2 style={{ color: "#fff" }}>Store's</h2>
+      </div>
       <Menu
         theme="dark"
         mode="inline"
