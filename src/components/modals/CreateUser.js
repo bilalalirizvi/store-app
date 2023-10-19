@@ -12,7 +12,7 @@ const CreateUser = ({ isEdit, data }) => {
 
   const [form] = Form.useForm();
 
-  const { notification } = App.useApp();
+  const { message } = App.useApp();
 
   const showModal = () => setIsModalOpen(true);
 
@@ -27,11 +27,7 @@ const CreateUser = ({ isEdit, data }) => {
       : await createUser(values);
     if (response) {
       handleCancel();
-      notification.success({
-        message: response,
-        //   description: "Hello, Ant Design!!",
-        placement: "top",
-      });
+      message.success(response);
     }
   };
 
@@ -45,6 +41,8 @@ const CreateUser = ({ isEdit, data }) => {
         </Button>
       )}
       <Modal
+        forceRender
+        name="create-user-form"
         title={isEdit ? "Edit User" : "Create User"}
         open={isModalOpen}
         onCancel={handleCancel}
@@ -141,9 +139,8 @@ const CreateUser = ({ isEdit, data }) => {
                 type="primary"
                 loading={buttonLoading}
                 htmlType="submit"
-                onClick={onFinish}
               >
-                Submit
+                {isEdit ? "Update" : "Create"}
               </Button>
             </div>
           </Form.Item>

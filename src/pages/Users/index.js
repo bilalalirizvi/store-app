@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 
-import { Button, Table } from "antd";
+import { Table } from "antd";
 
 import { useSelector } from "react-redux";
 
 import { getAllUsers } from "../../store/services/users";
 
-import { CiEdit, CiTrash } from "react-icons/ci";
 import { CreateUser } from "../../components/modals/CreateUser";
+import { DeleteModal } from "../../components";
 
 const Users = () => {
   const { isLoading, data, count } = useSelector((state) => state.users);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     getData();
   }, [page]);
 
   const getData = async () => {
+    window.scrollTo(0, 0);
     await getAllUsers({
       search: "",
       page,
@@ -69,7 +69,7 @@ const Users = () => {
       render: (_, obj) => (
         <div className="icon_box">
           <CreateUser isEdit data={obj} />
-          <CiTrash className="icon" />
+          <DeleteModal data={obj} />
         </div>
       ),
     },

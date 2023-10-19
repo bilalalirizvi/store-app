@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "../components";
 
 import { Products, Stores, Users } from "../pages";
+import { Spin } from "antd";
 
 const Routers = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,11 +24,14 @@ const Routers = () => {
           width: "100%",
           height: "100vh",
           display: "flex",
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          gap: "20px",
         }}
       >
-        Loading.......
+        <Spin />
+        <h6>Loading.......</h6>
       </div>
     );
   };

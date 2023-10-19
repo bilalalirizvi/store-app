@@ -21,8 +21,15 @@ const App = () => {
   }, [theme]);
 
   return (
-    <AntApp>
-      <Routers />;
+    <AntApp
+      message={{
+        maxCount: 1,
+      }}
+      notification={{
+        placement: "bottomLeft",
+      }}
+    >
+      <Routers />
     </AntApp>
   );
 };

@@ -31,8 +31,11 @@ export const createUser = async (payload) => {
 export const getAllUsers = async (payload) => {
   try {
     store.dispatch(setIsLoading(true));
-    const response = await privateAPI.post("/user/get-all", payload);
-    store.dispatch(setUsersData(response.data));
+    const res = await privateAPI.post("/user/get-all", payload);
+    if (res) {
+      store.dispatch(setUsersData(res.data));
+      return true;
+    }
   } catch (error) {
     console.log(
       "Get All Users Error >>>",
@@ -44,11 +47,9 @@ export const getAllUsers = async (payload) => {
 };
 
 export const updateUser = async (payload) => {
-  console.log("🚀 ~ file: users.js:47 ~ updateUser ~ payload:", payload);
   try {
     store.dispatch(setButtonLoading(true));
     const res = await privateAPI.post("/user/update", payload);
-    console.log("RESPONSE>>>", res);
     if (res) {
       await getAllUsers({
         search: "",
@@ -58,7 +59,6 @@ export const updateUser = async (payload) => {
       return res?.data?.message;
     }
   } catch (error) {
-    console.log("ERROR>>>:", error);
     console.log(
       "Update Users Error >>>",
       error?.response?.data?.message || "Server Error"
@@ -66,4 +66,27 @@ export const updateUser = async (payload) => {
   } finally {
     store.dispatch(setButtonLoading(false));
   }
+};
+
+export const deleteUser = async (id) => {
+  try {
+    // store.dispatch(setButtonLoading(true));
+    const res = await privateAPI.delete(`/user/delete/${id}`);
+    if (res) {
+      await getAllUsers({
+        search: "",
+        page: 1,
+        perPage: 10,
+      });
+      return res?.data?.message;
+    }
+  } catch (error) {
+    console.log(
+      "Update Users Error >>>",
+      error?.response?.data?.message || "Server Error"
+    );
+  }
+  //   finally {
+  //     store.dispatch(setButtonLoading(false));
+  //   }
 };
