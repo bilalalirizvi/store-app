@@ -5,8 +5,10 @@ import { Modal, App, Button } from "antd";
 import { CiTrash } from "react-icons/ci";
 import { PiWarningCircleLight } from "react-icons/pi";
 import { deleteUser } from "../../store/services/users";
+import { deleteStore } from "../../store/services/stores";
 
-const DeleteModal = ({ data }) => {
+const DeleteModal = ({ data, type }) => {
+  console.log("🚀 ~ file: DeleteModal.js:11 ~ DeleteModal ~ type:", type);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,7 +22,12 @@ const DeleteModal = ({ data }) => {
 
   const handleDelete = async () => {
     setIsLoading(true);
-    const res = await deleteUser(data?._id);
+    const res =
+      type === "user"
+        ? await deleteUser(data?._id)
+        : type === "store"
+        ? await deleteStore(data?._id)
+        : "";
     if (res) {
       message.success(res);
       handleCancel();

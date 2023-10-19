@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { Button, Modal, Form, Input, App } from "antd";
 
 import { CiEdit } from "react-icons/ci";
-import { createUser, updateUser } from "../../store/services/users";
 import { useSelector } from "react-redux";
+import { createStore, updateStore } from "../../store/services/stores";
 
-const CreateUser = ({ isEdit, data }) => {
-  const { buttonLoading } = useSelector((state) => state.users);
+const CreateStore = ({ isEdit, data }) => {
+  const { buttonLoading } = useSelector((state) => state.stores);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [form] = Form.useForm();
@@ -23,8 +23,8 @@ const CreateUser = ({ isEdit, data }) => {
 
   const onFinish = async (values) => {
     const response = isEdit
-      ? await updateUser({ ...values, _id: data?._id })
-      : await createUser(values);
+      ? await updateStore({ ...values, _id: data?._id })
+      : await createStore(values);
     if (response) {
       handleCancel();
       message.success(response);
@@ -37,13 +37,13 @@ const CreateUser = ({ isEdit, data }) => {
         <CiEdit className="icon" onClick={showModal} />
       ) : (
         <Button className="button" type="primary" onClick={showModal}>
-          Create User
+          Create Store
         </Button>
       )}
       <Modal
         forceRender
         name="create-user-form"
-        title={isEdit ? "Edit User" : "Create User"}
+        title={isEdit ? "Edit Store" : "Create Store"}
         open={isModalOpen}
         onCancel={handleCancel}
         footer={false}
@@ -57,12 +57,8 @@ const CreateUser = ({ isEdit, data }) => {
             data
               ? [
                   {
-                    name: "firstName",
-                    value: form.getFieldValue("firstName") || data?.firstName,
-                  },
-                  {
-                    name: "lastName",
-                    value: form.getFieldValue("lastName") || data?.lastName,
+                    name: "name",
+                    value: form.getFieldValue("name") || data?.name,
                   },
                   {
                     name: "phoneNumber",
@@ -73,6 +69,10 @@ const CreateUser = ({ isEdit, data }) => {
                     name: "email",
                     value: form.getFieldValue("email") || data?.email,
                   },
+                  {
+                    name: "address",
+                    value: form.getFieldValue("address") || data?.address,
+                  },
                 ]
               : []
           }
@@ -82,20 +82,8 @@ const CreateUser = ({ isEdit, data }) => {
           style={{ marginTop: "30px" }}
         >
           <Form.Item
-            label="First Name"
-            name="firstName"
-            rules={[
-              {
-                required: true,
-                message: "Required",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Last Name"
-            name="lastName"
+            label="Name"
+            name="name"
             rules={[
               {
                 required: true,
@@ -129,6 +117,18 @@ const CreateUser = ({ isEdit, data }) => {
           >
             <Input type="email" />
           </Form.Item>
+          <Form.Item
+            label="Address"
+            name="address"
+            rules={[
+              {
+                required: true,
+                message: "Required",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
           <Form.Item>
             <div className="create_user_modal_footer">
               <Button className="buttonOutlined" onClick={handleCancel}>
@@ -149,4 +149,4 @@ const CreateUser = ({ isEdit, data }) => {
     </>
   );
 };
-export { CreateUser };
+export { CreateStore };

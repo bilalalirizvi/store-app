@@ -69,7 +69,7 @@ const Users = () => {
       render: (_, obj) => (
         <div className="icon_box">
           <CreateUser isEdit data={obj} />
-          <DeleteModal data={obj} />
+          <DeleteModal type={"store"} data={obj} />
         </div>
       ),
     },
