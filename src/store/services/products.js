@@ -3,24 +3,25 @@ import { privateAPI } from "../../config/constant";
 import {
   setButtonLoading,
   setIsLoading,
-  setStoreData,
-} from "../slices/storesSlice";
+  setProductData,
+} from "../slices/productSlice";
 
-export const createStore = async (payload) => {
+export const createProduct = async (payload) => {
   try {
     store.dispatch(setButtonLoading(true));
-    const res = await privateAPI.post("/shop/create", payload);
+    const res = await privateAPI.post("/product/create", payload);
     if (res) {
-      await getAllStore({
+      await getAllProduct({
         search: "",
         page: 1,
         perPage: 10,
+        store: localStorage.getItem("storeId"),
       });
       return res?.data?.message;
     }
   } catch (error) {
     console.log(
-      "Create Store Error >>>",
+      "Create Product Error >>>",
       error?.response?.data?.message || "Server Error"
     );
   } finally {
@@ -28,17 +29,17 @@ export const createStore = async (payload) => {
   }
 };
 
-export const getAllStore = async (payload) => {
+export const getAllProduct = async (payload) => {
   try {
     store.dispatch(setIsLoading(true));
-    const res = await privateAPI.post("/shop/get-all", payload);
+    const res = await privateAPI.post("/product/get-all", payload);
     if (res) {
-      store.dispatch(setStoreData(res.data));
+      store.dispatch(setProductData(res.data));
       return true;
     }
   } catch (error) {
     console.log(
-      "Get All Store Error >>>",
+      "Get All Product Error >>>",
       error?.response?.data?.message || "Server Error"
     );
   } finally {
@@ -46,21 +47,22 @@ export const getAllStore = async (payload) => {
   }
 };
 
-export const updateStore = async (payload) => {
+export const updateProduct = async (payload) => {
   try {
     store.dispatch(setButtonLoading(true));
-    const res = await privateAPI.post("/shop/update", payload);
+    const res = await privateAPI.post("/product/update", payload);
     if (res) {
-      await getAllStore({
+      await getAllProduct({
         search: "",
         page: 1,
         perPage: 10,
+        store: localStorage.getItem("storeId"),
       });
       return res?.data?.message;
     }
   } catch (error) {
     console.log(
-      "Update Store Error >>>",
+      "Update Product Error >>>",
       error?.response?.data?.message || "Server Error"
     );
   } finally {
@@ -68,20 +70,21 @@ export const updateStore = async (payload) => {
   }
 };
 
-export const deleteStore = async (id) => {
+export const deleteProduct = async (id) => {
   try {
-    const res = await privateAPI.delete(`/shop/delete/${id}`);
+    const res = await privateAPI.delete(`/product/delete/${id}`);
     if (res) {
-      await getAllStore({
+      await getAllProduct({
         search: "",
         page: 1,
         perPage: 10,
+        store: localStorage.getItem("storeId"),
       });
       return res?.data?.message;
     }
   } catch (error) {
     console.log(
-      "Delete Store Error >>>",
+      "Delete Product Error >>>",
       error?.response?.data?.message || "Server Error"
     );
   }

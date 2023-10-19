@@ -6,9 +6,9 @@ import { CiTrash } from "react-icons/ci";
 import { PiWarningCircleLight } from "react-icons/pi";
 import { deleteUser } from "../../store/services/users";
 import { deleteStore } from "../../store/services/stores";
+import { deleteProduct } from "../../store/services/products";
 
 const DeleteModal = ({ data, type }) => {
-  console.log("🚀 ~ file: DeleteModal.js:11 ~ DeleteModal ~ type:", type);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,6 +27,8 @@ const DeleteModal = ({ data, type }) => {
         ? await deleteUser(data?._id)
         : type === "store"
         ? await deleteStore(data?._id)
+        : type === "product"
+        ? await deleteProduct(data?._id)
         : "";
     if (res) {
       message.success(res);

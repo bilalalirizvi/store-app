@@ -79,7 +79,7 @@ const Stores = () => {
   return (
     <div className="users_container">
       <div className="content_header">
-        <h2>Users</h2>
+        <h2>Stores</h2>
         <CreateStore />
       </div>
       <Table

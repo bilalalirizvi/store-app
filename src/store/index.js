@@ -3,7 +3,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./slices/userSlice";
 import themeSlice from "./slices/themeSlice";
 import usersSlice from "./slices/usersSlice";
-import storesSlice from "./slices/StoresSlice";
+import storesSlice from "./slices/storesSlice";
+import productSlice from "./slices/productSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,5 +12,6 @@ export const store = configureStore({
     user: userSlice,
     users: usersSlice,
     stores: storesSlice,
+    products: productSlice,
   },
 });

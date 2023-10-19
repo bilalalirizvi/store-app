@@ -18,6 +18,7 @@ const App = () => {
         document.body.style.setProperty(`--${key}`, dark[key]);
       });
     }
+    localStorage.setItem("storeId", "652e1e3c93ea0bf4e5ca8615");
   }, [theme]);
 
   return (
