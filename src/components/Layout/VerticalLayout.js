@@ -9,7 +9,7 @@ const { Header, Sider, Content, Footer } = Layout;
 
 const VerticalLayout = () => {
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ height: "100vh" }} className="v-layout">
       <Sider trigger={null}>
         <SiderMenu />
       </Sider>

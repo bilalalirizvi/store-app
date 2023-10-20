@@ -87,7 +87,7 @@ const Stores = () => {
         columns={columns}
         dataSource={data}
         rowKey={(record) => record._id}
-        scroll={{ x: 900 }}
+        scroll={{ x: 1100 }}
         pagination={{
           current: page,
           total: count,

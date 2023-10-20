@@ -33,3 +33,39 @@
   text-align: center;
   border-top: 1px solid var(--border);
 }
+
+.m-layout {
+  display: none;
+}
+.m-header {
+  width: 100%;
+}
+.m-header button {
+  cursor: pointer;
+  background: transparent;
+  color: var(--primary);
+  border: none;
+  outline: none;
+  font-size: 20px;
+  height: auto;
+  box-shadow: none;
+  margin-left: 8px;
+  margin-top: 4px;
+}
+
+.ant-drawer-content-wrapper {
+  width: 200px !important;
+}
+.mobile-menu-drawer .ant-drawer-body {
+  padding: 0;
+  background-color: var(--siderBg);
+}
+
+@media (max-width: 900px) {
+  .v-layout {
+    display: none;
+  }
+  .m-layout {
+    display: block;
+  }
+}

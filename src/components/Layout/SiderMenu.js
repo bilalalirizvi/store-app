@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import {
   UploadOutlined,
@@ -9,7 +9,7 @@ import {
 import { Menu } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const SiderMenu = () => {
+const SiderMenu = ({ visible, setVisible }) => {
   const headerHeight = 64;
   const footerHeight = 64;
   const { pathname } = useLocation();
@@ -32,6 +32,7 @@ const SiderMenu = () => {
   const navigate = useNavigate();
 
   const handleMenu = (event) => {
+    if (visible) setVisible(false);
     switch (event.key) {
       case "1":
         setActive(["1"]);
