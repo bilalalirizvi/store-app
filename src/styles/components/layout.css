@@ -15,10 +15,46 @@
   background-color: var(--primary) !important;
 }
 
+.sider_top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sider_bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 15px;
+}
+
 /* HEADER */
 .ant-layout-header {
   background-color: var(--headerBg);
   border-bottom: 1px solid var(--border);
+}
+.layout_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.layout_header .user_detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.layout_header .users_image_box {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.layout_header .users_image_box img {
+  width: auto;
+  height: 40px;
+  border-radius: 50%;
 }
 
 /* CONTENT */
@@ -53,6 +89,7 @@
   margin-top: 4px;
 }
 
+/* DRAWER */
 .ant-drawer-content-wrapper {
   width: 200px !important;
 }

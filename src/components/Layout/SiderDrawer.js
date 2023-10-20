@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Drawer, Button } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
-import { BiArrowBack } from "react-icons/bi";
 
 import SiderMenu from "./SiderMenu";
 
@@ -29,14 +28,6 @@ const SiderDrawer = () => {
         onClose={onClose}
         open={visible}
       >
-        {/* <div>
-          <div className="m-drawer">
-            <BiArrowBack
-              onClick={() => setVisible(false)}
-              className="back-arrow"
-            />
-          </div>
-        </div> */}
         <SiderMenu visible={visible} setVisible={setVisible} />
       </Drawer>
     </>

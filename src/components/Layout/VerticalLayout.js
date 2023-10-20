@@ -14,7 +14,20 @@ const VerticalLayout = () => {
         <SiderMenu />
       </Sider>
       <Layout>
-        <Header></Header>
+        <Header>
+          <div className="layout_header">
+            <h3></h3>
+            <div className="user_detail">
+              <h4>Bilal Ali Rizvi</h4>
+              <div className="users_image_box">
+                <img
+                  src={require("../../assets/images/user-icon.jpg")}
+                  alt="Image"
+                />
+              </div>
+            </div>
+          </div>
+        </Header>
         <Content>
           <Outlet />
         </Content>

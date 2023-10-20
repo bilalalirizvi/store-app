@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Table } from "antd";
+import { Table, Input } from "antd";
 
 import { useSelector } from "react-redux";
 
@@ -8,10 +8,12 @@ import { getAllUsers } from "../../store/services/users";
 
 import { CreateUser } from "../../components/modals/CreateUser";
 import { DeleteModal } from "../../components";
+const { Search } = Input;
 
 const Users = () => {
   const { isLoading, data, count } = useSelector((state) => state.users);
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getData();
@@ -20,7 +22,7 @@ const Users = () => {
   const getData = async () => {
     window.scrollTo(0, 0);
     await getAllUsers({
-      search: "",
+      search: search,
       page,
       perPage: 10,
     });
@@ -75,11 +77,25 @@ const Users = () => {
     },
   ];
 
+  // const onSearch = () => {
+  //   console.log(val);
+  // };
+
   return (
     <div className="users_container">
       <div className="content_header">
         <h2>Users</h2>
         <CreateUser />
+      </div>
+      <div className="search_input_box">
+        <Search
+          placeholder="Search..."
+          onSearch={getData}
+          enterButton
+          allowClear
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
       <Table
         loading={isLoading}

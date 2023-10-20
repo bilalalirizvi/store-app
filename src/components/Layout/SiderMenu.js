@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 
 import {
-  UploadOutlined,
   UserOutlined,
-  VideoCameraOutlined,
+  ShopOutlined,
+  ShoppingCartOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 
-import { Menu } from "antd";
+import { Button, Menu } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const SiderMenu = ({ visible, setVisible }) => {
-  const headerHeight = 64;
-  const footerHeight = 64;
+  const headerHeight = 70;
+  const footerHeight = 70;
   const { pathname } = useLocation();
   const getActiveKey = () => {
     switch (pathname) {
@@ -28,41 +29,29 @@ const SiderMenu = ({ visible, setVisible }) => {
         return ["1"];
     }
   };
-  const [active, setActive] = useState(getActiveKey);
+  const [active] = useState(getActiveKey);
   const navigate = useNavigate();
 
   const handleMenu = (event) => {
     if (visible) setVisible(false);
     switch (event.key) {
       case "1":
-        setActive(["1"]);
         navigate("/");
         break;
       case "2":
-        setActive(["2"]);
         navigate("/store");
         break;
       case "3":
-        setActive(["3"]);
         navigate("/product");
         break;
       default:
-        setActive(["1"]);
         navigate("/");
     }
   };
 
   return (
     <>
-      <div
-        style={{
-          width: "100%",
-          height: `${headerHeight}px`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <div className="sider_top" style={{ height: `${headerHeight}px` }}>
         <h2 style={{ color: "#fff" }}>Store's</h2>
       </div>
       <Menu
@@ -81,17 +70,25 @@ const SiderMenu = ({ visible, setVisible }) => {
           },
           {
             key: "2",
-            icon: <VideoCameraOutlined />,
+            icon: <ShopOutlined />,
             label: "Store",
           },
           {
             key: "3",
-            icon: <UploadOutlined />,
+            icon: <ShoppingCartOutlined />,
             label: "Product",
           },
         ]}
       />
-      <div style={{ width: "100%", height: `${footerHeight}px` }}></div>
+      <div className="sider_bottom" style={{ height: `${footerHeight}px` }}>
+        <Button
+          type="primary"
+          style={{ width: "100%" }}
+          icon={<LogoutOutlined />}
+        >
+          Logout
+        </Button>
+      </div>
     </>
   );
 };

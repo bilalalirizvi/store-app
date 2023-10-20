@@ -2,7 +2,8 @@
 table .ant-table-measure-row {
   display: none !important;
 }
-table thead tr > th {
+table thead tr > th:first-child {
+  width: 80px !important;
   /* padding-block: 10px !important; */
 }
 table tbody tr > td {
