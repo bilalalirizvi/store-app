@@ -16,11 +16,11 @@ const Users = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getData();
   }, [page]);
 
   const getData = async () => {
-    window.scrollTo(0, 0);
     await getAllUsers({
       search: search,
       page,
@@ -77,10 +77,6 @@ const Users = () => {
     },
   ];
 
-  // const onSearch = () => {
-  //   console.log(val);
-  // };
-
   return (
     <div className="users_container">
       <div className="content_header">
@@ -90,7 +86,7 @@ const Users = () => {
       <div className="search_input_box">
         <Search
           placeholder="Search..."
-          onSearch={getData}
+          onSearch={() => getData()}
           enterButton
           allowClear
           value={search}
