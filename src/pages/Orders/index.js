@@ -4,25 +4,24 @@ import { Table, Input } from "antd";
 
 import { useSelector } from "react-redux";
 
-import { getAllUsers } from "../../store/services/users";
+import { getAllOrder } from "../../store/services/orders";
 
-import { CreateUser } from "../../components/modals/CreateUser";
-import { DeleteModal } from "../../components";
+import { CreateProduct, DeleteModal } from "../../components";
 
 const { Search } = Input;
 
-const Users = () => {
-  const { isLoading, data, count } = useSelector((state) => state.users);
+const Orders = () => {
+  const { isLoading, data, count } = useSelector((state) => state.orders);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     getData();
   }, [page]);
 
   const getData = async () => {
-    await getAllUsers({
+    window.scrollTo(0, 0);
+    await getAllOrder({
       search,
       page,
       perPage: 10,
@@ -46,24 +45,20 @@ const Users = () => {
     },
     {
       title: "NAME",
-      dataIndex: "firstName",
-      key: "firstName",
-      render: (_, obj) => (
-        <p>
-          {obj?.firstName} {obj?.lastName}
-        </p>
-      ),
-    },
-    {
-      title: "PHONE NUMBER",
-      dataIndex: "phoneNumber",
-      key: "phoneNumber",
+      dataIndex: "name",
+      key: "name",
       render: (text) => <p>{text ? text : "-"}</p>,
     },
     {
-      title: "EMAIL",
-      dataIndex: "email",
-      key: "email",
+      title: "PRICE",
+      dataIndex: "price",
+      key: "price",
+      render: (text) => <p>{text ? text : "-"}</p>,
+    },
+    {
+      title: "STOCK",
+      dataIndex: "stock",
+      key: "stock",
       render: (text) => <p>{text ? text : "-"}</p>,
     },
     {
@@ -72,8 +67,8 @@ const Users = () => {
       key: "imageUrl",
       render: (_, obj) => (
         <div className="icon_box">
-          <CreateUser isEdit data={obj} />
-          <DeleteModal type={"store"} data={obj} />
+          <CreateProduct isEdit data={obj} />
+          <DeleteModal type={"product"} data={obj} />
         </div>
       ),
     },
@@ -82,8 +77,8 @@ const Users = () => {
   return (
     <div className="users_container">
       <div className="content_header">
-        <h2>Users</h2>
-        <CreateUser />
+        <h2>Orders</h2>
+        <CreateProduct />
       </div>
 
       <div className="search_input_box">
@@ -115,4 +110,4 @@ const Users = () => {
   );
 };
 
-export { Users };
+export { Orders };

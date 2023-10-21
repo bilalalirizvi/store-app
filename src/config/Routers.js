@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "../components";
 
-import { Login, Products, Stores, Users } from "../pages";
+import { Login, Products, Stores, Users, Orders } from "../pages";
 import { Spin } from "antd";
 
 const Routers = () => {
@@ -49,7 +49,8 @@ const AppRouter = () => {
           <Route index={true} element={<Users />} />
           <Route path="/store" element={<Stores />} />
           <Route path="/product" element={<Products />} />
-          {/* <Route path='*' element={<NotFound />} /> */}
+          <Route path="/order" element={<Orders />} />
+          <Route path="*" element={<Users />} />
         </Route>
       </Routes>
     </BrowserRouter>

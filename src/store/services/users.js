@@ -6,16 +6,21 @@ import {
   setUsersData,
 } from "../slices/usersSlice";
 
+const getUsers = async () => {
+  await getAllUsers({
+    search: "",
+    page: 1,
+    perPage: 10,
+    store: localStorage.getItem("storeId"),
+  });
+};
+
 export const createUser = async (payload) => {
   try {
     store.dispatch(setButtonLoading(true));
     const res = await privateAPI.post("/user/create", payload);
     if (res) {
-      await getAllUsers({
-        search: "",
-        page: 1,
-        perPage: 10,
-      });
+      await getUsers();
       return res?.data?.message;
     }
   } catch (error) {
@@ -51,11 +56,7 @@ export const updateUser = async (payload) => {
     store.dispatch(setButtonLoading(true));
     const res = await privateAPI.post("/user/update", payload);
     if (res) {
-      await getAllUsers({
-        search: "",
-        page: 1,
-        perPage: 10,
-      });
+      await getUsers();
       return res?.data?.message;
     }
   } catch (error) {
@@ -73,11 +74,7 @@ export const deleteUser = async (id) => {
     // store.dispatch(setButtonLoading(true));
     const res = await privateAPI.delete(`/user/delete/${id}`);
     if (res) {
-      await getAllUsers({
-        search: "",
-        page: 1,
-        perPage: 10,
-      });
+      await getUsers();
       return res?.data?.message;
     }
   } catch (error) {

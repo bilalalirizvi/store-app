@@ -20,11 +20,15 @@ const CreateUser = ({ isEdit, data }) => {
     form.resetFields();
     setIsModalOpen(false);
   };
-
+  // 652e1e3c93ea0bf4e5ca8615
   const onFinish = async (values) => {
     const response = isEdit
-      ? await updateUser({ ...values, _id: data?._id })
-      : await createUser(values);
+      ? await updateUser({
+          ...values,
+          _id: data?._id,
+          store: localStorage.getItem("storeId"),
+        })
+      : await createUser({ ...values, store: localStorage.getItem("storeId") });
     if (response) {
       handleCancel();
       message.success(response);

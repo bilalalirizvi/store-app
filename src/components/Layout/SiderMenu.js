@@ -25,6 +25,9 @@ const SiderMenu = ({ visible, setVisible }) => {
       case "/product": {
         return ["3"];
       }
+      case "/order": {
+        return ["4"];
+      }
       default:
         return ["1"];
     }
@@ -43,6 +46,9 @@ const SiderMenu = ({ visible, setVisible }) => {
         break;
       case "3":
         navigate("/product");
+        break;
+      case "4":
+        navigate("/order");
         break;
       default:
         navigate("/");
@@ -77,6 +83,11 @@ const SiderMenu = ({ visible, setVisible }) => {
             key: "3",
             icon: <ShoppingCartOutlined />,
             label: "Product",
+          },
+          {
+            key: "4",
+            icon: <ShoppingCartOutlined />,
+            label: "Order",
           },
         ]}
       />
