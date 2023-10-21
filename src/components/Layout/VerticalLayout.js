@@ -16,13 +16,13 @@ const VerticalLayout = () => {
       <Layout>
         <Header>
           <div className="layout_header">
-            <h3></h3>
+            {/* <h3></h3> */}
             <div className="user_detail">
               <h4>Imtiaz's Store</h4>
               <div className="users_image_box">
                 <img
                   src={require("../../assets/images/user-icon.jpg")}
-                  alt="Image"
+                  alt="Icon"
                 />
               </div>
             </div>

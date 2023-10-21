@@ -15,6 +15,7 @@ const Routers = () => {
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const Loading = () => {

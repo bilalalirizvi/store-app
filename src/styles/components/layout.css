@@ -37,7 +37,7 @@
 .layout_header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 .layout_header .user_detail {

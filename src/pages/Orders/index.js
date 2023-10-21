@@ -16,11 +16,12 @@ const Orders = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   const getData = async () => {
-    window.scrollTo(0, 0);
     await getAllOrder({
       search,
       page,
@@ -38,7 +39,7 @@ const Orders = () => {
         <div className="users_image_box">
           <img
             src={v ? v : require("../../assets/images/user-icon.jpg")}
-            alt="Image"
+            alt="Order"
           />
         </div>
       ),
