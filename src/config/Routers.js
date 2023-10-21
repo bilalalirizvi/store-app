@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "../components";
 
-import { Products, Stores, Users } from "../pages";
+import { Login, Products, Stores, Users } from "../pages";
 import { Spin } from "antd";
 
 const Routers = () => {
@@ -59,7 +59,10 @@ const AppRouter = () => {
 const AuthRouter = () => {
   return (
     <BrowserRouter>
-      <Routes>{/* <Route element={<PrivateWrapper />}></Route> */}</Routes>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Login />} />
+      </Routes>
     </BrowserRouter>
   );
 };

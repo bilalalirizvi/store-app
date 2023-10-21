@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Table } from "antd";
+import { Table, Input } from "antd";
 
 import { useSelector } from "react-redux";
 
@@ -8,9 +8,12 @@ import { getAllProduct } from "../../store/services/products";
 
 import { CreateProduct, DeleteModal } from "../../components";
 
+const { Search } = Input;
+
 const Products = () => {
   const { isLoading, data, count } = useSelector((state) => state.products);
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getData();
@@ -19,7 +22,7 @@ const Products = () => {
   const getData = async () => {
     window.scrollTo(0, 0);
     await getAllProduct({
-      search: "",
+      search,
       page,
       perPage: 10,
       store: localStorage.getItem("storeId"),
@@ -77,6 +80,18 @@ const Products = () => {
         <h2>Products</h2>
         <CreateProduct />
       </div>
+
+      <div className="search_input_box">
+        <Search
+          placeholder="Search..."
+          onSearch={() => getData()}
+          enterButton
+          allowClear
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
       <Table
         loading={isLoading}
         columns={columns}

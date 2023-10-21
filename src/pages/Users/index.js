@@ -8,6 +8,7 @@ import { getAllUsers } from "../../store/services/users";
 
 import { CreateUser } from "../../components/modals/CreateUser";
 import { DeleteModal } from "../../components";
+
 const { Search } = Input;
 
 const Users = () => {
@@ -22,7 +23,7 @@ const Users = () => {
 
   const getData = async () => {
     await getAllUsers({
-      search: search,
+      search,
       page,
       perPage: 10,
     });
@@ -83,6 +84,7 @@ const Users = () => {
         <h2>Users</h2>
         <CreateUser />
       </div>
+
       <div className="search_input_box">
         <Search
           placeholder="Search..."
@@ -93,6 +95,7 @@ const Users = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
+
       <Table
         loading={isLoading}
         columns={columns}

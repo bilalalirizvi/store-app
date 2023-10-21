@@ -1,0 +1,38 @@
+.auth_container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: var(--siderBg);
+}
+.auth_container h1 {
+  color: var(--white) !important;
+}
+
+.auth_container .form_wrapper {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 30px;
+}
+.auth_container .form_wrapper {
+  color: var(--white) !important;
+}
+
+.auth_container .form_wrapper form {
+  width: 100% !important;
+}
+.auth_container .form_wrapper label {
+  color: var(--white) !important;
+}
+
+.auth_container .form_wrapper button {
+  margin-top: 10px;
+  width: 100%;
+}

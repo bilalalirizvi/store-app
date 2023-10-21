@@ -4,6 +4,8 @@ export const light = {
   headerBg: "#fff",
   footerBg: "#fff",
   border: "#f0f0f0",
+  white: "#ffff",
+  black: "#000",
 };
 
 export const dark = {
@@ -12,4 +14,6 @@ export const dark = {
   headerBg: "#fff",
   footerBg: "#fff",
   border: "#f0f0f0",
+  white: "#ffff",
+  black: "#000",
 };

@@ -10,6 +10,7 @@
 /* COMPONENT */
 
 /* PAGES */
+@import "./pages/login.css";
 @import "./pages/users.css";
 @import "./pages/stores.css";
 @import "./pages/products.css";

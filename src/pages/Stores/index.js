@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Table } from "antd";
+import { Table, Input } from "antd";
 
 import { useSelector } from "react-redux";
 
@@ -8,9 +8,12 @@ import { getAllStore } from "../../store/services/stores";
 
 import { CreateStore, DeleteModal } from "../../components";
 
+const { Search } = Input;
+
 const Stores = () => {
   const { isLoading, data, count } = useSelector((state) => state.stores);
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getData();
@@ -19,7 +22,7 @@ const Stores = () => {
   const getData = async () => {
     window.scrollTo(0, 0);
     await getAllStore({
-      search: "",
+      search,
       page,
       perPage: 10,
     });
@@ -82,6 +85,18 @@ const Stores = () => {
         <h2>Stores</h2>
         <CreateStore />
       </div>
+
+      <div className="search_input_box">
+        <Search
+          placeholder="Search..."
+          onSearch={() => getData()}
+          enterButton
+          allowClear
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
       <Table
         loading={isLoading}
         columns={columns}
