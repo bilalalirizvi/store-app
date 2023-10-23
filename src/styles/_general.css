@@ -54,3 +54,21 @@ code {
   font-size: 20px;
   cursor: pointer;
 }
+
+.view_text {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+.users_image_box {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.users_image_box img {
+  width: auto;
+  height: 40px;
+  border-radius: 50%;
+}

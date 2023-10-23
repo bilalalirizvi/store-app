@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 
 import { getAllOrder } from "../../store/services/orders";
 
-import { CreateProduct, DeleteModal } from "../../components";
+import { CreateProduct, DeleteModal, ViewOrderDetail } from "../../components";
+
+import moment from "moment";
 
 const { Search } = Input;
 
@@ -35,32 +37,42 @@ const Orders = () => {
       title: " ",
       dataIndex: "imageUrl",
       key: "imageUrl",
-      render: (v) => (
+      render: (text) => (
         <div className="users_image_box">
           <img
-            src={v ? v : require("../../assets/images/user-icon.jpg")}
+            src={text ? text : require("../../assets/images/user-icon.jpg")}
             alt="Order"
           />
         </div>
       ),
     },
     {
-      title: "NAME",
+      title: "USER NAME",
       dataIndex: "name",
       key: "name",
-      render: (text) => <p>{text ? text : "-"}</p>,
+      render: (_, obj) => (
+        <p>{`${obj?.user?.firstName} ${obj?.user?.lastName}`}</p>
+      ),
     },
     {
-      title: "PRICE",
-      dataIndex: "price",
-      key: "price",
-      render: (text) => <p>{text ? text : "-"}</p>,
+      title: "DATE",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (date) => <p>{moment(date).format("ddd, DD-MM-YYYY")}</p>,
     },
     {
-      title: "STOCK",
-      dataIndex: "stock",
-      key: "stock",
-      render: (text) => <p>{text ? text : "-"}</p>,
+      title: "NUM OF ORDER",
+      dataIndex: "product",
+      key: "product",
+      render: (_, obj) => <p>{obj?.product?.length}</p>,
+    },
+    {
+      title: "NET TOTAL",
+      dataIndex: "netTotal",
+      key: "netTotal",
+      render: (text) => (
+        <p>{text ? <>{`Rs.${text?.toLocaleString()}`}</> : "-"}</p>
+      ),
     },
     {
       title: "ACTIONS",
@@ -68,8 +80,9 @@ const Orders = () => {
       key: "imageUrl",
       render: (_, obj) => (
         <div className="icon_box">
+          <ViewOrderDetail data={obj?.product} />
           <CreateProduct isEdit data={obj} />
-          <DeleteModal type={"product"} data={obj} />
+          <DeleteModal type={"order"} data={obj} />
         </div>
       ),
     },

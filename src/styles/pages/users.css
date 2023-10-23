@@ -20,14 +20,3 @@
     width: 100%;
   }
 }
-
-.users_container .users_image_box {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-.users_container .users_image_box img {
-  width: auto;
-  height: 40px;
-  border-radius: 50%;
-}

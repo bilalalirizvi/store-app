@@ -32,7 +32,7 @@ export const createOrder = async (payload) => {
 export const getAllOrder = async (payload) => {
   try {
     store.dispatch(setIsLoading(true));
-    const res = await privateAPI.post("/product/get-all", payload);
+    const res = await privateAPI.post("/order/get-all", payload);
     if (res) {
       store.dispatch(setOrderData(res.data));
       return true;
