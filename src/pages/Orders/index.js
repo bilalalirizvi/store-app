@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import { Table, Input } from "antd";
+import { Table, Input, Button } from "antd";
 
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { getAllOrder } from "../../store/services/orders";
 
@@ -16,6 +17,8 @@ const Orders = () => {
   const { isLoading, data, count } = useSelector((state) => state.orders);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -58,10 +61,10 @@ const Orders = () => {
       title: "DATE",
       dataIndex: "createdAt",
       key: "createdAt",
-      render: (date) => <p>{moment(date).format("ddd, DD-MM-YYYY")}</p>,
+      render: (date) => <p>{moment(date).format("ddd, DD-MM-YYYY hh:mm a")}</p>,
     },
     {
-      title: "NUM OF ORDER",
+      title: "NUM OF PRODUCT",
       dataIndex: "product",
       key: "product",
       render: (_, obj) => <p>{obj?.product?.length}</p>,
@@ -80,7 +83,7 @@ const Orders = () => {
       key: "imageUrl",
       render: (_, obj) => (
         <div className="icon_box">
-          <ViewOrderDetail data={obj?.product} />
+          <ViewOrderDetail data={obj} />
           <CreateProduct isEdit data={obj} />
           <DeleteModal type={"order"} data={obj} />
         </div>
@@ -92,7 +95,13 @@ const Orders = () => {
     <div className="users_container">
       <div className="content_header">
         <h2>Orders</h2>
-        <CreateProduct />
+        <Button
+          className="button"
+          type="primary"
+          onClick={() => navigate("/create-order")}
+        >
+          Create Order
+        </Button>
       </div>
 
       <div className="search_input_box">

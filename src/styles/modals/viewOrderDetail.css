@@ -1,0 +1,29 @@
+.view_order_detail_modal {
+  width: 950px !important;
+}
+
+.view_order_detail_modal .header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-inline: 20px;
+}
+.view_order_detail_modal .header .row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.view_order_detail_modal .header .row p {
+  font-size: 16px;
+  width: 200px;
+}
+.view_order_detail_modal .header .row h6 {
+  font-size: 16px;
+}
+
+.view_order_detail_modal .divider {
+  margin-block: 20px;
+  opacity: 0.2;
+}

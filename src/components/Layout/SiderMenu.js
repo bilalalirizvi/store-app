@@ -28,6 +28,9 @@ const SiderMenu = ({ visible, setVisible }) => {
       case "/order": {
         return ["4"];
       }
+      case "/create-order": {
+        return ["4"];
+      }
       default:
         return ["1"];
     }

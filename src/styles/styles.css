@@ -6,11 +6,11 @@
 /* MODALS */
 @import "./modals/createUser.css";
 @import "./modals/deleteModal.css";
+@import "./modals/viewOrderDetail.css";
 
-/* COMPONENT */
-
-/* PAGES */
+/* COMPONENT */ /* PAGES */
 @import "./pages/login.css";
 @import "./pages/users.css";
 @import "./pages/stores.css";
 @import "./pages/products.css";
+@import "./pages/createOrder.css";
